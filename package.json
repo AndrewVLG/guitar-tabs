@@ -1,0 +1,19 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run start:dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \" npm run server\" \"npm run client\""
+  },
+  "author": "AndrewVLG",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+  }
+}

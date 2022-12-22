@@ -1,0 +1,9 @@
+.wrap {
+    position: relative;
+    left: -3000px;
+    display: flex;
+    width: 4500px;
+    height: 100%;
+    transition: all 0.5s;
+
+}

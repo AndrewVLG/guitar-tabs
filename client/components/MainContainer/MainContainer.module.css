@@ -1,0 +1,15 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    height: 85vh;
+  }
+  .box {
+    display: flex;
+    overflow: hidden;
+    width: 70vw;
+    height: 80%;
+  }

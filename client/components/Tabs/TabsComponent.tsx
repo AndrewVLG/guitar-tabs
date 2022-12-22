@@ -1,0 +1,65 @@
+import React from 'react';
+import { styled } from '@mui/material/styles';
+import { Tab, Tabs } from "@mui/material";
+interface StyledTabsProps {
+    children?: React.ReactNode;
+    value: number;
+    onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+interface StyledTabProps {
+  label: string;
+}
+
+interface TabsComponentProps {
+  value: number;
+  items: string[];
+  handleChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+const TabsComponent:React.FC<TabsComponentProps> = (props) => {
+    const StyledTabs = styled((props: StyledTabsProps) => (
+        <Tabs
+          {...props}
+          TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+        />
+      ))({
+        '& .MuiTabs-indicator': {
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: 'transparent',
+        },
+        '& .MuiTabs-indicatorSpan': {
+          maxWidth: 40,
+          width: '100%',
+          backgroundColor: 'white',
+        },
+      });
+      
+    const StyledTab = styled((props: StyledTabProps) => (
+        <Tab disableRipple {...props} />
+      ))(({ theme }) => ({
+        textTransform: 'none',
+        fontWeight: theme.typography.fontWeightRegular,
+        fontSize: theme.typography.pxToRem(15),
+        marginRight: theme.spacing(1),
+        color: 'rgba(255, 255, 255, 0.7)',
+        '&.Mui-selected': {
+          color: '#fff',
+        },
+        '&.Mui-focusVisible': {
+          backgroundColor: 'rgba(100, 95, 228, 0.32)',
+        },
+      }));
+      const tabs = props.items.map(item => <StyledTab label={item}/>)
+
+      
+    return (
+      <StyledTabs 
+        value={props.value}
+        onChange={props.handleChange}>
+        {tabs}
+      </StyledTabs>
+    )
+}
+
+export default TabsComponent;

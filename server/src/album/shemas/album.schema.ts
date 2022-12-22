@@ -5,6 +5,8 @@ export type AlbumDocument = mongoose.HydratedDocument<Album>;
 
 @Schema()
 export class Album {
+  @Prop()
+  artist: string
 
   @Prop()
   title: string;

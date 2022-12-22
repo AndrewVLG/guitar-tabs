@@ -1,0 +1,12 @@
+.wrap {
+  height: 100vh;
+  background-color: black;
+}
+
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 90%;
+}

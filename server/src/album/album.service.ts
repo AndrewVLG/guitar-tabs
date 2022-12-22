@@ -14,7 +14,7 @@ export class AlbumService {
     }
 
     async getOne(id: ObjectId):Promise<Album> {
-      const album = await (await this.albumModel.findById(id)).populate('tabs');
+      const album = await this.albumModel.findById(id).populate('tabs');
       console.log(album)
       return album;
     }

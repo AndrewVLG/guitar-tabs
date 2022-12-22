@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    height: 15vh;
+    width: auto;
+    background-image: url('http://localhost:3030/img/7e5793345.jpg');
+  }
+  .label-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%;
+    margin-left: 1%;
+    color: white;
+    font-size: 2.4rem;
+    font-family: "Times New Roman", Times, serif;  
+  }

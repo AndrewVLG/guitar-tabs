@@ -1,0 +1,12 @@
+.wrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 5vh;
+    width: 90%;
+
+
+}
+.song-name {
+    flex-grow: 1;
+}
