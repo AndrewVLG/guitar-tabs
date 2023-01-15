@@ -14,4 +14,5 @@ const AlbumCard:React.FC<any> = (props) => {
     )
 }
 
+
 export default AlbumCard;

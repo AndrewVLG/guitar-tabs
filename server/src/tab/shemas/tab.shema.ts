@@ -6,6 +6,12 @@ export type TabDocument = HydratedDocument<Tab>;
 @Schema()
 export class Tab {
   @Prop()
+  artist: string
+
+  @Prop()
+  audio: string
+  
+  @Prop()
   _id: mongoose.Schema.Types.ObjectId;
   
   @Prop()

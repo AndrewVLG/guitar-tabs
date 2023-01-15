@@ -20,7 +20,7 @@ export interface OneAlbum {
     year: string
     description: string
     picture: string
-    tabs: Tab[]
+    tabs: string[]
 }
 
 

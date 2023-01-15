@@ -1,51 +1,42 @@
 import { useRouter } from "next/router";
 import AlbumCard from "../../../components/AlbumCard/AlbumCard";
 import Layout from "../../../layouts/Layout"
-import { Albums } from "../../../types/album";
+import { Album, OneAlbum } from "../../../types/album";
+import React from "react";
+import { GetServerSideProps } from "next";
+const Index = ({artist}) => {
+    console.log(artist.albums)
 
-
-const Index = () => {
-    const albums:Albums[] = [
-        {
-            _id: '32t3t',
-            title: 'Генератор зла',
-            year: '1998',    
-            picture: 'http://localhost:3030/albumscover/generator.jpg',
-            tabs: ['', ''],
-    
-        },
-        {
-            _id: 'qweqweqw3yw',
-            title: 'Генератор зла',
-            year: '1998',
-            picture: 'http://localhost:3030/albumscover/generator.jpg',
-            tabs: ['', '']
-        },
-        {
-            _id: 'qwe3124124yw',
-            title: 'Генератор зла',
-            year: '1998',
-            picture: 'http://localhost:3030/albumscover/generator.jpg',
-            tabs: ['', '']
-        },
-        {
-            _id: 'qwe3124124yw',
-            title: 'Генератор зла',
-            year: '1998',
-            picture: 'http://localhost:3030/albumscover/generator.jpg',
-            tabs: ['', '']
-        },
-
-
-    ];
-    
     const router = useRouter();
-    const allAlbums = albums.map(album => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album}/>)
-    console.log(router.query)
+    const [data, setData] = React.useState([])
+    const allAlbums = artist.albums.map(album => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album}/>)
+
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+
+            const response = await fetch(`http://localhost:3030/artists/${router.query.artist}`);
+            const data = await response.json();
+            setData(data);
+    
+        }
+        fetchData()
+    }, [])
+    console.log(data.albums)
     return(
         <Layout backgroundColor="#151215" alignContent="flex-start">
             {allAlbums}
         </Layout>
     )
+}
+export const getServerSideProps:GetServerSideProps = async ({query, params}) => {
+
+    const response = await fetch(`http://localhost:3030/artists/${params.artist}`);
+    const data = await response.json();
+    return {
+        props: {
+            artist: data
+        }
+    }
 }
 export default Index;

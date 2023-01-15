@@ -18,7 +18,7 @@ export class Album {
   picture: string;
 
   @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Tab"}]})
-  tabs: Tab[];
+  songs: Tab[];
 }
 
 export const AlbumSchema = SchemaFactory.createForClass(Album);
