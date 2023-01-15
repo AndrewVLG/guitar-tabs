@@ -12,6 +12,7 @@ export interface Album {
     year: string
     picture: string
     tabs: string[]
+    songs: Tab[]
 }
 export interface OneAlbum {
     _id: string

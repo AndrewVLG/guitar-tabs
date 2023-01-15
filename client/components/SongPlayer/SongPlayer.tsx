@@ -10,6 +10,7 @@ const SongPlayer = () => {
     const audioRef:any = React.useRef();
     const {currentTime, play, track, volume, duration, name} = useTypedSelector(state => state.player);
     useEffect(() => {
+        audioRef.current.pause()
         audioRef.current.volume = volume / 100
         init(audioRef);
         audioRef.current.onloadedmetadata = () => {
@@ -18,13 +19,14 @@ const SongPlayer = () => {
         audioRef.current.ontimeupdate = () => {
             setCurrentTime(audioRef.current.currentTime)
         }
+
     }, []);
 
     useEffect(() => {
         audioRef.current.src = track;
         audioRef.current.play();
     }, [track]);
-    const progress = Math.floor(currentTime) / Math.floor(duration) * 100
+    
     const playbackControl = (play: boolean) => {
         if(!play) {
             playTrack();

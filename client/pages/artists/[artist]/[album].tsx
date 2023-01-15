@@ -3,7 +3,8 @@ import SongsList from "../../../components/SongsList/SongsList";
 import Layout from "../../../layouts/Layout";
 import React from 'react';
 import { GetServerSideProps } from "next";
-const Album = ({album}) => {
+import { Album } from "../../../types/album";
+const Album = ({album}:{album:Album}) => {
     const [currentTab, setCurrentTab] = React.useState(album.songs[0].link)
     const changeTab = (link:string) => {
         setCurrentTab(link);
@@ -29,13 +30,14 @@ const Album = ({album}) => {
 
     )
 }
-export const getServerSideProps:GetServerSideProps = async ({query, params}) => {
+export const getServerSideProps:GetServerSideProps = async ({params}) => {
 
-    const response = await fetch(`http://localhost:3030/albums/${params.album}`);
+    const response = await fetch(`http://localhost:3030/albums/${params?.album}`);
     const data = await response.json();
+    const album:Album = data;
     return {
         props: {
-            album: data
+            album: album
         }
     }
 }
