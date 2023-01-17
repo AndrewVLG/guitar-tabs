@@ -1,19 +1,14 @@
-export interface Tab {
+export interface Song {
     _id: string
     title: string
     album: string
     link: string
     text: string
+    audio: string
+
 }
 
-export interface Album {
-    _id: string
-    title: string
-    year: string
-    picture: string
-    tabs: string[]
-    songs: Tab[]
-}
+
 export interface OneAlbum {
     _id: string
     artist: string
@@ -21,9 +16,8 @@ export interface OneAlbum {
     year: string
     description: string
     picture: string
-    tabs: string[]
+    songs: Song[]
 }
-
 
 
 export interface Albums {
@@ -40,7 +34,7 @@ export interface Artist {
     description: string
     year: string
     picture: string
-    albums: Album[]
+    albums: OneAlbum[]
 }
 
 export interface Artists {

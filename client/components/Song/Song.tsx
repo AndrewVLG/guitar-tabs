@@ -8,7 +8,6 @@ import styles from './Song.module.css';
 interface SongProps {
     artist: string
     name: string
-    link: string
     audio: string
     onChangeTab: () => void
 }
