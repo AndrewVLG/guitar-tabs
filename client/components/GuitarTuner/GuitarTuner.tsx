@@ -4,7 +4,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import styles from './GuitarTuner.module.css';
 import { color } from '@mui/system';
 import { GuitarFormation } from '../../types/tuner';
-import TunerButton from '../TunerButton';
+import TunerButton from '../TunerButton/TunerButton';
 interface GuitarTunerProps {
   formations: GuitarFormation [],
 }
