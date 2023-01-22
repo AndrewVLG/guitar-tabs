@@ -7,7 +7,7 @@ import { AlbumService } from "./album.service";
 
 export class AlbumController {
     constructor(private albumService: AlbumService) {}
-    @Get()
+    @Get() 
     getAll() {
         return this.albumService.getAll();
     }

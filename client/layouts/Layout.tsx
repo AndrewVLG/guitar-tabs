@@ -27,9 +27,9 @@ const Layout:React.FC<Layout> = (props) => {
         <>
             <ThemeProvider theme={theme}>
                 <Header />
-                <div className="container">
+                <section className="container">
                     {props.children}
-                </div>
+                </section>
             </ThemeProvider>
 
             <style jsx>

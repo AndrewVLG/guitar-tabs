@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 const MainContainer = () => {
   const router = useRouter();
     const [offset, setOffset] = React.useState(-3000);
-    let timer: any;
+    let timer: NodeJS.Timeout;
 
     React.useEffect(() => {
         if(offset < 1500) {
@@ -26,27 +26,22 @@ const MainContainer = () => {
         <div className={styles['main-container']}>
 
               <Tabs
-                variant='standard'
-                
+                variant='standard' 
                 indicatorColor='secondary'
                 textColor='secondary'
                 value={offset}
-
               >
                 <Tab
                   value={-3000}
                   label="Исполнители"
-                  onClick={() => router.push('/')}
                 />
                 <Tab 
                   value={-1500} 
                   label="Альбомы" 
-                  onClick={() => router.push('/albums')}  
                 />
                 <Tab 
                   value={0} 
                   label="Табы" 
-                  onClick={() => router.push('/tabs')}
                 />
               </Tabs>
 

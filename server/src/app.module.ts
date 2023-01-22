@@ -5,6 +5,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { AlbumModule } from "./album/album.module";
 import { TabModule } from "./tab/tab.module";
 import { ArtistModule } from './artist/artist.module'
+import { GuitarFormationModule } from "./guitarFormation/guitarFormation.module";
 
 @Module({
 imports: 
@@ -13,6 +14,7 @@ imports:
         TabModule,
         AlbumModule,
         ArtistModule,
+        GuitarFormationModule,
         ServeStaticModule.forRoot({rootPath: patch.resolve(__dirname, '..', 'src', 'static')})
     ]
 })

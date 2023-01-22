@@ -9,7 +9,7 @@ const Header:React.FC = (props) => {
   const router = useRouter();
 
     return(
-    <div className={styles.header}>
+    <header className={styles.header}>
         <div className={styles['label-container']}>
           <label>Guitar-tabs</label>
           <Button onClick={() => setSidePanelFlag(true)} color='secondary' variant='outlined' sx={{height: "30%", width: '25%'}}>
@@ -31,7 +31,7 @@ const Header:React.FC = (props) => {
             <Button onClick={() => router.push('/about_project')}>О проекте</Button>
           </Box>
         </Drawer>
-    </div>
+    </header>
     )
 }
 export default Header;

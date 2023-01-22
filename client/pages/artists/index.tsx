@@ -7,7 +7,7 @@ import TabsComponent from '../../components/Tabs/TabsComponent';
 import Layout from "../../layouts/Layout";
 import { Artist, Artists } from '../../types/album';
 
-const Index = ({artists}) => {
+const Index = ({artists}:{artists: Artists}) => {
     console.log(artists)
     const [value, setValue] = React.useState<number>(0);
 
