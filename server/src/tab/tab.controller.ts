@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from "@nestjs/common/decorators";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common/decorators";
 import { ObjectId } from "mongoose";
 import { TabService } from "./tab.service";
 
@@ -14,4 +14,5 @@ export class TabController {
      getOneTab(@Param('id') id: ObjectId) {
         return this.tabService.getOneTab(id);
     }
+    
 }

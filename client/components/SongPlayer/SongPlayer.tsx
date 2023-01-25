@@ -10,14 +10,24 @@ const SongPlayer = () => {
     const audioRef:any = React.useRef();
     const {currentTime, play, track, volume, duration, name} = useTypedSelector(state => state.player);
     useEffect(() => {
+        const proxyAudio = new Proxy(audioRef.current, {
+            get(target, prop) {
+                if( prop in target ) {
+                    return target[prop]
+                } else {
+                    return 0;
+                }
+            }
+        });
         audioRef.current.pause()
         audioRef.current.volume = volume / 100
-        init(audioRef);
+        init(audioRef.current);
+
         audioRef.current.onloadedmetadata = () => {
-            setDuration(audioRef.current.duration)
+            setDuration(proxyAudio.duration)
         }
         audioRef.current.ontimeupdate = () => {
-            setCurrentTime(audioRef.current.currentTime)
+            setCurrentTime(proxyAudio.currentTime)
         }
 
     }, []);

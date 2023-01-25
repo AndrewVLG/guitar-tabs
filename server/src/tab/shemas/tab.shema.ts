@@ -12,19 +12,22 @@ export class Tab {
   audio: string
   
   @Prop()
-  _id: mongoose.Schema.Types.ObjectId;
-  
-  @Prop()
-  title: string;
+  _id: mongoose.Schema.Types.ObjectId
 
   @Prop()
-  text: string;
+  _n: string
   
   @Prop()
-  album: string;
+  title: string
 
   @Prop()
-  link: string;
+  text: string
+  
+  @Prop()
+  album: string
+
+  @Prop()
+  link: string
 }
 
 export const TabSchema = SchemaFactory.createForClass(Tab)

@@ -15,7 +15,7 @@ const Song:React.FC<SongProps> = (props) => {
 
     const [isPlay, setPlay] = React.useState(false)
     const { setActiveTrack } = useActions();
-    const { play, track } = useTypedSelector(state => state.player);
+    const { play, track, audioRef } = useTypedSelector(state => state.player);
     const changeTrack = (trackInfo:ActionSetTrack, play: boolean) => {
         setActiveTrack(trackInfo);
         setPlay(true)
@@ -23,11 +23,12 @@ const Song:React.FC<SongProps> = (props) => {
     if(isPlay && props.audio !== track) {
         setPlay(false);
     }
+
     return (
         <div className={styles.wrap}>
-            <IconButton onClick={() => changeTrack({track: props.audio, name: `${props.artist} - ${props.name}`}, play)}>
+            <IconButton disabled={props.audio.length < 1} onClick={() => changeTrack({track: props.audio, name: `${props.artist} - ${props.name}`}, play)}>
                 {!isPlay
-                    ?<PlayCircle fontSize="large" sx={{color: 'red'}}/>
+                    ?<PlayCircle  fontSize="large" sx={{color: 'red'}}/>
                     :<PauseCircle fontSize="large" sx={{color: 'red'}}/>}
             </IconButton>
             <div className={styles['song-name']}>

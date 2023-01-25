@@ -11,7 +11,7 @@ const MainContainer = () => {
     let timer: NodeJS.Timeout;
 
     React.useEffect(() => {
-        if(offset < 1500) {
+        if(offset <= 0) {
             timer = setTimeout(() => setOffset(prev => {
                 return prev + 1500
               }), 5000)  
