@@ -26,7 +26,7 @@ export const playerReducer = (state:PlayerState = initialState, action: ActionTy
         case PlayerActionType.SET_DURATION:
             return ({...state, duration: action.payload});
         case PlayerActionType.SET_CURRENT_TIME:
-            return({...state, currentTime: action.payload})
+            return({...state, currentTime: action.payload});
         default:
             return state;
 

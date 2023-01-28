@@ -4,22 +4,16 @@ import { Box, Button, Drawer, List, ListItemButton, ListItemIcon, ListItemText }
 import { useRouter } from 'next/router';
 import styles from './Header.module.css';
 import SideMenuButton from '../SideMenuButton/SideMenuButton';
-
-type Tile = 'Главная' | 'Исполнители' | 'Гитарный тюнер' | 'О проекте';
-type Link = '/' | '/artists' | '/guitar_tuner' | '/about_project';
-export interface SideMenuButton {
-  title: Tile
-  link: Link
-}
+import { SideMenuButtons, Links, Titles } from '../../types/SideMenuButtons';
 
 const Header:React.FC = () => {
   const [sidePanelFlag, setSidePanelFlag] = React.useState(false);
   const router = useRouter();
-    const sideMenuButtons: SideMenuButton[] = [
-      {title:'Главная', link: '/'},
-      {title: 'Исполнители', link: '/artists'},
-      {title: 'Гитарный тюнер', link: '/guitar_tuner'},
-      {title: 'О проекте', link: '/about_project'}
+    const sideMenuButtons: SideMenuButtons[] = [
+      {title: Titles.HOME, link:Links.HOME},
+      {title: Titles.ARTISTS, link: Links.ARTISTS},
+      {title: Titles.GUITAR_TUNERS, link: Links.GUITAR_TUNERS},
+      {title: Titles.ABOUT_Project, link: Links.ABOUT_Project},
     ]
 
     const buttons = sideMenuButtons.map((button, id) => <SideMenuButton key={id} title={button.title} link={button.link}/> )
