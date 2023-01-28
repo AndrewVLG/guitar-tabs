@@ -1,13 +1,28 @@
 import React from 'react';
-import { Menu } from '@mui/icons-material';
-import { Box, Button, Drawer } from '@mui/material';
+import { Home, Info, LibraryMusic, Menu, MusicNote } from '@mui/icons-material';
+import { Box, Button, Drawer, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useRouter } from 'next/router';
 import styles from './Header.module.css';
+import SideMenuButton from '../SideMenuButton/SideMenuButton';
 
-const Header:React.FC = (props) => {
+type Tile = 'Главная' | 'Исполнители' | 'Гитарный тюнер' | 'О проекте';
+type Link = '/' | '/artists' | '/guitar_tuner' | '/about_project';
+export interface SideMenuButton {
+  title: Tile
+  link: Link
+}
+
+const Header:React.FC = () => {
   const [sidePanelFlag, setSidePanelFlag] = React.useState(false);
   const router = useRouter();
+    const sideMenuButtons: SideMenuButton[] = [
+      {title:'Главная', link: '/'},
+      {title: 'Исполнители', link: '/artists'},
+      {title: 'Гитарный тюнер', link: '/guitar_tuner'},
+      {title: 'О проекте', link: '/about_project'}
+    ]
 
+    const buttons = sideMenuButtons.map((button, id) => <SideMenuButton key={id} title={button.title} link={button.link}/> )
     return(
     <header className={styles.header}>
         <div className={styles['label-container']}>
@@ -25,10 +40,9 @@ const Header:React.FC = (props) => {
               backgroundColor: 'white'
               
             }}>
-              <Button onClick={() => router.push('/')}>Главная</Button>
-            <Button onClick={() => router.push('/artists')}>Исполнители</Button>
-            <Button onClick={() => router.push('/guitar_tuner')}>Гитарный тюнер</Button>
-            <Button onClick={() => router.push('/about_project')}>О проекте</Button>
+            <List>
+              {buttons}
+            </List>
           </Box>
         </Drawer>
     </header>
