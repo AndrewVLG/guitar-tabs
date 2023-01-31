@@ -1,13 +1,13 @@
 import { Button } from '@mui/material';
 import { border } from '@mui/system';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 import TabsComponent from '../../components/Tabs/TabsComponent';
 import Layout from "../../layouts/Layout";
 import { Artist, Artists } from '../../types/album';
 
-const Index = ({artists}:{artists: Artists}) => {
+const Index = ({artists}:InferGetServerSidePropsType<typeof getServerSideProps>) => {
     console.log(artists)
     const [value, setValue] = React.useState<number>(0);
 
@@ -60,7 +60,7 @@ const Index = ({artists}:{artists: Artists}) => {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    height: 900px;
+                    height: 850px;
                     width: 1900px;
                     background-image: url('http://localhost:3030/img/${artist(artists, value).name}.jpg');
                 }
@@ -73,10 +73,10 @@ const Index = ({artists}:{artists: Artists}) => {
 
 export const getServerSideProps:GetServerSideProps = async () => {
     const response = await fetch('http://localhost:3030/artists');
-    const data = await response.json();
+    const artists: Artists[] = await response.json();
     return {
         props: {
-            artists: data
+            artists
         }
     }
 }

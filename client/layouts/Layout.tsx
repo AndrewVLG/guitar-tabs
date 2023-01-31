@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 interface Layout {
     flexDirection?: 'row' | 'column'
@@ -30,6 +31,7 @@ const Layout:React.FC<Layout> = (props) => {
                 <section className="container">
                     {props.children}
                 </section>
+                <Footer />
             </ThemeProvider>
 
             <style jsx>
@@ -40,7 +42,7 @@ const Layout:React.FC<Layout> = (props) => {
                             justify-content: ${props.justifyContent || 'center'};
                             flex-wrap: ${props.flexWrap || 'wrap'};
                             align-content: ${props.alignContent || 'center'};
-                            height: 85vh;
+                            height: 80vh;
                             background-color: ${props.backgroundColor || 'black'};
                     }
                 `}
@@ -53,4 +55,3 @@ const Layout:React.FC<Layout> = (props) => {
 
 export default Layout;
 
-//#151215

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import AlbumCard from "../../../components/AlbumCard/AlbumCard";
 import Layout from "../../../layouts/Layout"
-import { Album, Artist, OneAlbum } from "../../../types/album";
+import { Artist } from "../../../types/album";
 import React from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 const Index = ({artist}:{artist:Artist}) => {
@@ -25,6 +25,10 @@ export const getServerSideProps:GetServerSideProps = async ({query, params}) => 
         }
     }
 }
+
+
+
+
 export default Index;
 
 

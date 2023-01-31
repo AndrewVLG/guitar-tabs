@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps, InferGetStaticPropsType } from "next";
 import GuitarTuner from "../../components/GuitarTuner/GuitarTuner";
 import Layout from "../../layouts/Layout";
 import { GuitarFormation } from "../../types/tuner";
 
 
-const Index = ({formations}:{formations:GuitarFormation []}) => {
+const Index = ({formations}:InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <>
             <Layout alignContent="flex-start">
@@ -36,13 +36,13 @@ const Index = ({formations}:{formations:GuitarFormation []}) => {
 }
 export default Index;
 
-export const getServerSideProps:GetServerSideProps = async () => {
+export const getStaticProps:GetStaticProps = async () => {
 
     const response = await fetch('http://localhost:3030/formations');
-    const data = await response.json();
+    const formations: GuitarFormation [] = await response.json();
     return {
         props: {
-            formations: data
+            formations
         }
     }
 }
