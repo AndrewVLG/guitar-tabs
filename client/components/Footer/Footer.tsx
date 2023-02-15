@@ -9,7 +9,7 @@ const Footer:React.FC = () => {
             <IconButton href="https://github.com/AndrewVLG">
                 <GitHub sx={{color: 'white'}}/>
             </IconButton>
-            <IconButton href="https://t.me/@Breykin">
+            <IconButton href="https://web.telegram.org/breykin">
                 <Telegram sx={{color: 'white'}}/>
             </IconButton>
         </footer>
