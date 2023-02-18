@@ -29,7 +29,7 @@ const MainContainer = () => {
   return (
 
     <div className={styles['main-container']}>
-      {console.log(timer)}
+
       <Tabs
         variant='standard'
         indicatorColor='secondary'

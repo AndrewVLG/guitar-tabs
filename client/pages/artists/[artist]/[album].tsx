@@ -13,9 +13,9 @@ const Album = ({album}:InferGetServerSidePropsType<typeof getServerSideProps>) =
         <>
             <Layout justifyContent="flex-start" alignContent="stretch" backgroundColor='#151215'>
                 <SongsList  album={album} onChangeTab={changeTab}/>
-                <div className="current-tab">
+                <section className="current-tab">
                     <embed src={currentTab} width='100%' />
-                </div>
+                </section>
             </Layout>
             
             <style jsx>

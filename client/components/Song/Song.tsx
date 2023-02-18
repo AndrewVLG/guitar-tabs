@@ -25,7 +25,7 @@ const Song:React.FC<SongProps> = (props) => {
     }
 
     return (
-        <div className={styles.wrap}>
+        <li className={styles.wrap}>
             <IconButton disabled={props.audio.length < 1} onClick={() => changeTrack({track: props.audio, name: `${props.artist} - ${props.name}`}, play)}>
                 {!isPlay
                     ?<PlayCircle  fontSize="large" sx={{color: 'red'}}/>
@@ -34,7 +34,7 @@ const Song:React.FC<SongProps> = (props) => {
             <div className={styles['song-name']}>
                 <Button onClick={props.onChangeTab} fullWidth>{`${props.artist} - ${props.name}`}</Button>
             </div>
-        </div>
+        </li>
     )
 }
 

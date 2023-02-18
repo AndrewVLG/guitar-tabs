@@ -8,15 +8,22 @@ interface SongsListProps  {
     onChangeTab: (arg: string) => void;
 }
 const SongsList:React.FC<SongsListProps> = (props) => {
-    const songs = props.album.songs.map((song) => <Song artist={props.album.artist} name={song.title} audio={song.audio} onChangeTab={() => props.onChangeTab(song.link)}/>)
+    const songs = props.album.songs.map((song) => 
+        <Song 
+            artist={props.album.artist} 
+            name={song.title} 
+            audio={song.audio} 
+            onChangeTab={() => props.onChangeTab(song.link)}
+        />)
+        
     return (
-        <div className={styles['songs-list']}>
-            <div className={styles.container}>
+        <section className={styles['songs-list']}>
+            <ul className={styles.container}>
                 {songs}
-            </div>
+            </ul>
 
             <SongPlayer />
-        </div>
+        </section>
     )
 }
 

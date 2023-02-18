@@ -52,6 +52,7 @@ const GuitarTuner:React.FC<GuitarTunerProps> = ({formations}) => {
             onChange={handleChange}
             value={name}
         >
+        
         {menuItems}
         </Select>
       </FormControl>
