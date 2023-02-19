@@ -2,6 +2,7 @@
     display: flex;
     height: 15vh;
     width: auto;
+    background-color: black;
     background-image: url('http://localhost:3030/img/7e5793345.jpg');
     background-size: cover;
   }
@@ -34,8 +35,5 @@
     .side-bar {
       width: 100vw;
     }
-    .header {
-      background-color: black;
-      background-image: none;
-    }
+
   }
