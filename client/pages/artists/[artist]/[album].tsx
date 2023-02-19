@@ -11,18 +11,30 @@ const Album = ({album}:InferGetServerSidePropsType<typeof getServerSideProps>) =
     };
     return (
         <>
-            <Layout justifyContent="flex-start" alignContent="stretch" backgroundColor='#151215'>
-                <SongsList  album={album} onChangeTab={changeTab}/>
-                <section className="current-tab">
-                    <embed src={currentTab} width='100%' />
-                </section>
+            <Layout>
+                <div className="wrap">
+                    <SongsList  album={album} onChangeTab={changeTab}/>
+                    <section className="current-tab">
+                        <embed src={currentTab} width='100%' />
+                    </section>
+                </div>
             </Layout>
             
             <style jsx>
                 {`
+                    .wrap {
+                        display: flex;
+                        width: 100vw;
+                        height: 100%;
+                    }
                     .current-tab {
                         display: flex;
                         width: 65vw;                 
+                    }
+                    @media(max-width: 600px) {
+                        .current-tab {
+                            width: 100vw;
+                        }
                     }
                 `}
             </style>  

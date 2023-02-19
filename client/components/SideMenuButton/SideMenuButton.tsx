@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 interface PropsSideMenuButton {
     title: string
     link: string
+    onCloseBar: () => void
 }
-const SideMenuButton:React.FC<PropsSideMenuButton> = ({title, link}) => {
+const SideMenuButton:React.FC<PropsSideMenuButton> = ({title, link, onCloseBar}) => {
     const router = useRouter();
     const icon = 
     title === 'Главная' && <Home />
@@ -14,9 +15,12 @@ const SideMenuButton:React.FC<PropsSideMenuButton> = ({title, link}) => {
     || title === 'Гитарный тюнер' && <MusicNote />
     || title === 'О проекте' && <Info />
     || <MusicNote />;
-
+    const switching = () => {
+        onCloseBar()
+        router.push(link)
+    }
     return (
-        <ListItemButton onClick={() => router.push(link)}>
+        <ListItemButton onClick={switching}>
             <ListItemIcon>
               {icon}
             </ListItemIcon>

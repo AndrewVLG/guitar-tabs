@@ -1,18 +1,39 @@
 import { useRouter } from "next/router";
 import AlbumCard from "../../../components/AlbumCard/AlbumCard";
 import Layout from "../../../layouts/Layout"
-import { Artist } from "../../../types/album";
+import { Artist, OneAlbum } from "../../../types/album";
 import React from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-const Index = ({artist}:{artist:Artist}) => {
+import { Typography } from "@mui/material";
+const Index = ({artist}:InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     const router = useRouter();
-    const allAlbums = artist.albums.map(album => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album}/>)
+    const allAlbums = artist.albums.map((album: OneAlbum) => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album}/>)
 
     return(
-        <Layout backgroundColor="#151215" alignContent="flex-start">
-            {allAlbums}
-        </Layout>
+        <>
+            <Layout>
+                <div className="wrap">
+                    {allAlbums}
+                </div>
+            </Layout>
+            <style jsx>
+                {`
+                    .wrap {
+                        display: flex;
+                        height: 100%;
+                        width: 100vw;
+                    }
+                    @media(max-width: 600px) {
+                        .wrap {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                    }
+                `}
+            </style>    
+        </>
+
     )
 }
 export const getServerSideProps:GetServerSideProps = async ({query, params}) => {

@@ -16,24 +16,22 @@ const Header:React.FC = () => {
       {title: Titles.ABOUT_Project, link: Links.ABOUT_Project},
     ]
 
-    const buttons = sideMenuButtons.map((button, id) => <SideMenuButton key={id} title={button.title} link={button.link}/> )
+    const buttons = sideMenuButtons.map((button, id) => 
+      <SideMenuButton 
+        key={id} 
+        title={button.title} 
+        link={button.link} 
+        onCloseBar={() => setSidePanelFlag(false)}/> )
     return(
     <header className={styles.header}>
         <div className={styles['label-container']}>
-          <label>Guitar-tabs</label>
-          <Button onClick={() => setSidePanelFlag(true)} color='secondary' variant='outlined' sx={{height: "30%", width: '25%'}}>
+          <h1 className={styles.label}>Guitar-tabs</h1>
+          <Button onClick={() => setSidePanelFlag(true)} color='secondary' variant='text' sx={{m: '1',height: "30%", width: '25%'}}>
             <Menu color='secondary' fontSize='large'/>
           </Button>
         </div>
         <Drawer open={sidePanelFlag} onClose={() => setSidePanelFlag(false)} anchor='left'>
-          <Box sx={
-            {
-              display: 'flex',
-              flexDirection: 'column',
-              width: '20vw', 
-              backgroundColor: 'white'
-              
-            }}>
+          <Box className={styles['side-bar']}>
             <List>
               {buttons}
             </List>

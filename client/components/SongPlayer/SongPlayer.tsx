@@ -54,6 +54,7 @@ const SongPlayer = () => {
         audioRef.current.currentTime = newValue as number
         setCurrentTime(newValue as number)
     }
+    console.log(track)
     return (
         <div className={styles.wrap}>
             <audio ref={audioRef}></audio>

@@ -15,7 +15,7 @@ const Song:React.FC<SongProps> = (props) => {
 
     const [isPlay, setPlay] = React.useState(false)
     const { setActiveTrack } = useActions();
-    const { play, track, audioRef } = useTypedSelector(state => state.player);
+    const { play, track } = useTypedSelector(state => state.player);
     const changeTrack = (trackInfo:ActionSetTrack, play: boolean) => {
         setActiveTrack(trackInfo);
         setPlay(true)

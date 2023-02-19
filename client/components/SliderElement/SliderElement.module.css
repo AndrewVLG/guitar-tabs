@@ -1,14 +1,19 @@
 .element {
-
     width: 1900px;
     height: 100%;
-
+    cursor: pointer;
+    background-size: cover;
 }
 .element h1 {
-    font-size: 8rem;
+    font-size: 120px;
     margin-left: 7%;
     font-family: "Times New Roman", Times, serif;
 }
 .element p {
     margin-left: 7%;
+}
+@media(max-width: 600px) {
+    .element h1 {
+        font-size: 60px;
+    }
 }

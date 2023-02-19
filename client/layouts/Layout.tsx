@@ -38,12 +38,16 @@ const Layout:React.FC<Layout> = (props) => {
                 {`
                     .container {
                             display: flex;
-                            flex-direction: ${props.flexDirection || 'row'};
+                            flex-direction: column;
                             justify-content: ${props.justifyContent || 'center'};
                             flex-wrap: ${props.flexWrap || 'wrap'};
                             align-content: ${props.alignContent || 'center'};
-                            height: 80vh;
-                            background-color: ${props.backgroundColor || 'black'};
+                            height: 78vh;
+                            max-height: fit-content;
+                            background-color: black;
+                    }
+                    @media(max-width: 600px) {
+                        flex-direction: 'column';
                     }
                 `}
             </style>  

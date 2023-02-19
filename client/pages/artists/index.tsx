@@ -35,13 +35,13 @@ const Index = ({artists}:InferGetServerSidePropsType<typeof getServerSideProps>)
 
     return (
         <>
-            <Layout backgroundColor='#151215'>
+            <Layout>
                 <div className="content">
                     <TabsComponent items={artist(artists, undefined, 'names')} value={value} handleChange={handleChange}/>
                     <div className='img-container'>
                         <Button 
                             onClick={() => router.push(`/artists/${artist(artists, value)._id}/`)}
-                            sx={{height: "10%", width: '20%', fontSize: '150%'}} 
+                            sx={{height: "10%", width: '20%', fontSize: '100%'}} 
                             variant='outlined' 
                             color='primary'>Перейти</Button>
                     </div>
@@ -52,6 +52,7 @@ const Index = ({artists}:InferGetServerSidePropsType<typeof getServerSideProps>)
                 {`
                 .content {
                     width: 60vw;
+                    height: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -60,9 +61,17 @@ const Index = ({artists}:InferGetServerSidePropsType<typeof getServerSideProps>)
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    height: 850px;
-                    width: 1900px;
+                    height: 100%;
+                    width: 100vw;
                     background-image: url('http://localhost:3030/img/${artist(artists, value).name}.jpg');
+                    background-size: cover;
+
+                }
+                @media(max-width: 600px) {
+                    .img-container {
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
                 }
                 `}
             </style>         
