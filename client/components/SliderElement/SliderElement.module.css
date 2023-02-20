@@ -13,7 +13,7 @@
 .element p {
     margin-left: 7%;
 }
-@media(max-width: 600px) {
+@media(max-width: 1200px) {
     .element h1 {
         font-size: 60px;
     }
