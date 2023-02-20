@@ -5,12 +5,18 @@ interface SliderElementProps {
     title: string
     description?: string
     color?: string
+    width: string
 
 }
 const SliderElement:React.FC<SliderElementProps> = (props) => {
 
     return (
-        <div className={styles.element} style={{backgroundImage: `url(http://localhost:3030/img/${props.picture}.jpg)`, color: props.color}}>
+        <div className={styles.element} 
+            style={{
+                backgroundImage: `url(http://localhost:3030/img/${props.picture}.jpg)`, 
+                color: props.color,
+                width: props.width,
+                }}>
             <h1>{props.title}</h1>
             <p>{props.description}</p>
         </div>

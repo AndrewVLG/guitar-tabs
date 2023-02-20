@@ -1,8 +1,9 @@
 .element {
-    width: 1900px;
+    width: 1200px;
     height: 100%;
     cursor: pointer;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .element h1 {
     font-size: 120px;

@@ -7,17 +7,25 @@ import { useRouter } from 'next/router';
 
 const MainContainer = () => {
   const router = useRouter();
+  const [containerWidth, setContainerWidth] = React.useState('');
   const [offset, setOffset] = React.useState(-3000);
   let timer: NodeJS.Timeout;
-
+  const containerRef:React.LegacyRef<HTMLDivElement | undefined> = React.useRef();
+  React.useEffect(() => {
+    if(containerRef) {
+      setContainerWidth(getComputedStyle(containerRef.current).width)
+      setOffset(Number.parseInt(getComputedStyle(containerRef.current).width) * -2)
+    }
+  }, [])
+  console.log(containerWidth)
   React.useEffect(() => {
 
     if (offset <= 0) {
       timer = setTimeout(() => setOffset(prev => {
-        return prev + 1500
+        return prev + Number.parseInt(containerWidth)
       }), 5000)
     } else {
-      setOffset(-3000)
+      setOffset(Number.parseInt(containerWidth) * -2)
     }
     return () => {
       console.log(timer);
@@ -50,8 +58,8 @@ const MainContainer = () => {
         />
       </Tabs>
 
-      <div className={styles.box}>
-        <Slider offset={offset} />
+      <div ref={containerRef} className={styles.box}>
+        <Slider containerWidth={containerWidth} offset={offset} />
       </div>
 
     </div>
