@@ -32,7 +32,13 @@ const Song:React.FC<SongProps> = (props) => {
                     :<PauseCircle fontSize="large" sx={{color: 'red'}}/>}
             </IconButton>
             <div className={styles['song-name']}>
-                <Button onClick={props.onChangeTab} fullWidth>{`${props.artist} - ${props.name}`}</Button>
+                <Button 
+                    onClick={props.onChangeTab} 
+                    fullWidth
+                    className={styles['btn-title']}
+                >
+                    {`${props.artist} - ${props.name}`}
+                </Button>
             </div>
         </li>
     )

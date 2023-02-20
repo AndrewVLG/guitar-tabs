@@ -33,7 +33,7 @@ const Album = ({album}:InferGetServerSidePropsType<typeof getServerSideProps>) =
                     }
                     @media(max-width: 600px) {
                         .current-tab {
-                            width: 100vw;
+                            display: none;
                         }
                     }
                 `}

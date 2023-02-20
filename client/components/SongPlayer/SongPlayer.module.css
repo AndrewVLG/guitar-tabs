@@ -24,3 +24,8 @@
     width: 20%;
     margin-right: 1%;
 }
+@media(max-width: 600px) {
+    .wrap {
+        height: 15%;
+    }
+}

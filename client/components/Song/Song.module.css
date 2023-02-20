@@ -11,3 +11,11 @@
 .song-name {
     flex-grow: 1;
 }
+.btn-title {
+    font-size: 12px;
+}
+@media(max-width: 1200px) {
+    .btn-title {
+        font-size: 10px;
+    }
+}
