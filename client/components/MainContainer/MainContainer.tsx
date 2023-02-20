@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Tab, Tabs, Box } from '@mui/material';
+import { Tab, Tabs } from '@mui/material';
 import Slider from '../Slider/Slider';
 import styles from './MainContainer.module.css';
 import { useRouter } from 'next/router';
@@ -10,14 +9,28 @@ const MainContainer = () => {
   const [containerWidth, setContainerWidth] = React.useState('');
   const [offset, setOffset] = React.useState(-3000);
   let timer: NodeJS.Timeout;
-  const containerRef:React.LegacyRef<HTMLDivElement | undefined> = React.useRef();
+  const containerRef:any = React.useRef();
   React.useEffect(() => {
-    if(containerRef) {
-      setContainerWidth(getComputedStyle(containerRef.current).width)
-      setOffset(Number.parseInt(getComputedStyle(containerRef.current).width) * -2)
-    }
+    const proxyRef = new Proxy(containerRef, {
+      get(target, prop) {
+        if(prop in target) {
+          return target[prop];
+        } else {
+          return 0;
+        }
+      }
+    })
+
+    setContainerWidth(getComputedStyle(proxyRef.current).width)
+    setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2)
+    const foo = () => {
+      setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2)
+      setContainerWidth(getComputedStyle(proxyRef.current).width)}
+    window.addEventListener('resize', foo);
+    return () => {
+      removeEventListener('resize', foo)}
   }, [])
-  console.log(containerWidth)
+
   React.useEffect(() => {
 
     if (offset <= 0) {
@@ -32,7 +45,6 @@ const MainContainer = () => {
       clearTimeout(timer)
     };
   }, [offset]);
-
 
   return (
 
