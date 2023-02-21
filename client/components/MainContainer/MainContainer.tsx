@@ -20,15 +20,19 @@ const MainContainer = () => {
           return 0;
         }
       }
-    })
-    setContainerWidth(getComputedStyle(proxyRef.current).width)
-    setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2)
+    });
+    setContainerWidth(getComputedStyle(proxyRef.current).width);
+    setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2);
     const foo = () => {
-      setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2)
-      setContainerWidth(getComputedStyle(proxyRef.current).width)}
+      setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2);
+      setContainerWidth(getComputedStyle(proxyRef.current).width);
+    }
+
     window.addEventListener('resize', foo);
+
     return () => {
-      removeEventListener('resize', foo)}
+      removeEventListener('resize', foo)
+    }
   }, [])
 
   React.useEffect(() => {
