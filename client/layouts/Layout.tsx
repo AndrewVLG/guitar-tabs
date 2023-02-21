@@ -42,7 +42,7 @@ const Layout:React.FC<Layout> = (props) => {
                             justify-content: ${props.justifyContent || 'center'};
                             flex-wrap: ${props.flexWrap || 'wrap'};
                             align-content: ${props.alignContent || 'center'};
-                            height: 78vh;
+                            height: 80vh;
                             max-height: fit-content;
                             background-color: black;
                     }

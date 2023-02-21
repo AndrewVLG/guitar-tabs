@@ -8,6 +8,7 @@ const MainContainer = () => {
   const router = useRouter();
   const [containerWidth, setContainerWidth] = React.useState('');
   const [offset, setOffset] = React.useState(-3000);
+  const holdOffset = React.useMemo(() => offset, [containerWidth]);
   let timer: NodeJS.Timeout;
   const containerRef:any = React.useRef();
   React.useEffect(() => {
@@ -20,7 +21,6 @@ const MainContainer = () => {
         }
       }
     })
-
     setContainerWidth(getComputedStyle(proxyRef.current).width)
     setOffset(Number.parseInt(getComputedStyle(proxyRef.current).width) * -2)
     const foo = () => {
@@ -57,11 +57,11 @@ const MainContainer = () => {
         value={offset}
       >
         <Tab
-          value={-3000}
+          value={holdOffset}
           label="Исполнители"
         />
         <Tab
-          value={-1500}
+          value={holdOffset / 2}
           label="Альбомы"
         />
         <Tab
