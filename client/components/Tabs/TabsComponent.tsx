@@ -50,7 +50,7 @@ const TabsComponent:React.FC<TabsComponentProps> = (props) => {
           backgroundColor: 'rgba(100, 95, 228, 0.32)',
         },
       }));
-      const tabs = props.items.map(item => <StyledTab label={item}/>)
+      const tabs = props.items.map((item, id) => <StyledTab key={id} label={item}/>)
 
       
     return (

@@ -8,9 +8,7 @@ import Layout from "../../layouts/Layout";
 import { Artist, Artists } from '../../types/album';
 
 const Index = ({artists}:InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    console.log(artists)
     const [value, setValue] = React.useState<number>(0);
-
     const router = useRouter();
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

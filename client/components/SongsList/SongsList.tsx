@@ -8,8 +8,9 @@ interface SongsListProps  {
     onChangeTab: (arg: string) => void;
 }
 const SongsList:React.FC<SongsListProps> = (props) => {
-    const songs = props.album.songs.map((song) => 
+    const songs = props.album.songs.map((song, id) => 
         <Song 
+            key={id}
             artist={props.album.artist} 
             name={song.title} 
             audio={song.audio} 

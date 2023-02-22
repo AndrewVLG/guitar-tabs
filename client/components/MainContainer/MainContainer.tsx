@@ -45,7 +45,6 @@ const MainContainer = () => {
       setOffset(Number.parseInt(containerWidth) * -2)
     }
     return () => {
-      console.log(timer);
       clearTimeout(timer)
     };
   }, [offset]);

@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 const Index = ({artist}:InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     const router = useRouter();
-    const allAlbums = artist.albums.map((album: OneAlbum) => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album}/>)
+    const allAlbums = artist.albums.map((album: OneAlbum, id: number) => <AlbumCard navigation={() => router.push(`/artists/${router.query.artist}/${album._id}`)} {...album} key={id}/>)
 
     return(
         <>

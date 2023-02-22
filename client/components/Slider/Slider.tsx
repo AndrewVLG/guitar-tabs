@@ -26,7 +26,7 @@ const Slider:React.FC<SliderProps> = (props) => {
             picture: '3657356',
         },
     ];
-    const images = arr.map(elem => <SliderElement {...elem} width={props.containerWidth}/>)
+    const images = arr.map((elem, id) => <SliderElement {...elem} key={id} width={props.containerWidth}/>)
     return (
         <div className={styles.wrap} style={{left: props.offset}}>
             {images}
